@@ -5,7 +5,7 @@ Simulating a simple guess a 4-digit password.
 Two adaptations will be implemented: Whether the human will be the one
 attempting to crack the code, or the computer.
 
-Rules:
+Rules:\n\n
 
 A random 4-dig password from 1 to 6 (duplicate numbers are valid) will be
 randomly generated.
