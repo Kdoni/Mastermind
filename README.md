@@ -24,6 +24,6 @@ wrong position. <br />
 A "E" from exact position will signal that a number is both the correct one and in the
 designated position. <br />
 
-Should the agent crack the code withing 12 turns, they will be crown victorious.
+Should the agent crack the code withing 12 turns, they will be crowned victorious.
 <br />
 Otherwise the game is lost.
