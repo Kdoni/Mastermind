@@ -1,6 +1,5 @@
 # Mastermind
 &nbsp;
-&nbsp;
 Inspired by the Odin Project. Ruby on Rails Path.
 &nbsp;
 Simulating a simple guess a 4-digit password.
