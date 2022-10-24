@@ -8,4 +8,4 @@ def number_in_number?(outer, inner)
   false
 end
 
-p number_in_number?(102, 12)
+p number_in_number?(15_342_671_232_150, 2)
