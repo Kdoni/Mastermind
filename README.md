@@ -24,6 +24,8 @@ in no less than 12 tries.
 
 Upon each guess hints will be given:
 &nbsp;
+&nbsp;
+
 A "P" from correct position will signal that a number is indeed correct, but in the
 wrong position.
 &nbsp;
