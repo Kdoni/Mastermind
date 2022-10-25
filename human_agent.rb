@@ -12,23 +12,18 @@ class Game
     play_game
   end
 
-  def self.number_in_number?(outer, inner)
-    test = 10**(inner < 2 ? 1 : Math.log10(inner).ceil.to_i)
-    while outer >= inner
-      return true if ((outer - inner) % test).zero?
+  # def self.number_in_number?(outer, inner)
+  #   test = 10**(inner < 2 ? 1 : Math.log10(inner).ceil.to_i)
+  #   while outer >= inner
+  #     return true if ((outer - inner) % test).zero?
 
-      outer /= 10
-    end
-    false
-  end
+  #     outer /= 10
+  #   end
+  #   false
+  # end
 
   def self.guess_checker
-    if @@guess.to_s.length != 4 || number_in_number?(@@guess,
-                                                     7) || number_in_number?(@@guess,
-                                                                             8) || number_in_number?(@@guess,
-                                                                                                     9) || number_in_number?(
-                                                                                                       @@guess, 0
-                                                                                                     )
+    if @@guess.to_s.length != 4 || @@guess.to_s.include?('7') || @@guess.to_s.include?('8') || @@guess.to_s.include?('9') || @@guess.to_s.include?('0')
       puts 'Invalid input, try again...'
       play_game
     end
@@ -36,16 +31,34 @@ class Game
 
   def self.play_game
     puts 'Take a guess.'
-    @@guess = gets.chomp.to_i
-    guess_checker
+    while @@game_over == false
+      @@guess = gets.chomp.to_i
+      guess_checker
+      game_progress
+    end
   end
 
-  #   def self.password
-  #     p @@password
-  #   end
+  def self.game_progress
+    while @@attempts > 1 && @@game_over == false
+      if @@guess == @@password
+        puts 'You did it! You cracked the code!!'
+        @@game_over = true
+      else
+        @@attempts -= 1
+        puts "Not quite, try gain. You've got #{@@attempts} left."
+        break
+      end
+    end
+  end
+
+  def self.password
+    p @@password
+  end
+
   def self.guess
     p @@guess
   end
 end
 
+Game.password
 Game.start_game
