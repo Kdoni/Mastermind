@@ -4,6 +4,7 @@ class Game
   @@game_over = false
   @@guess = ''
   @@password = [rand(1..6), rand(1..6), rand(1..6), rand(1..6)].join('').to_i
+
   def self.start_game
     puts "Welcome to a Mastermind game simulation on the terminal!\n\n"
     puts 'Try to guess the 4-digit password, consisting of numbers ranging from 1 to 6.'
@@ -12,11 +13,11 @@ class Game
     play_game
   end
 
-  def self.reset_hints
+  private_class_method def self.reset_hints
     @@hints = ''
   end
 
-  def self.hint_provider
+  private_class_method def self.hint_provider
     @@guess.to_s.split('').each_with_index do |num, index|
       @@password.to_s.split('').each_with_index do |number, indx|
         @@hints += 'E' if num == number && index == indx
@@ -34,21 +35,21 @@ class Game
     p @@hints
   end
 
-  def self.guess_checker
+  private_class_method def self.guess_checker
     if @@guess.to_s.length != 4 || @@guess.to_s.include?('7') || @@guess.to_s.include?('8') || @@guess.to_s.include?('9') || @@guess.to_s.include?('0')
       puts 'Invalid input, try again...'
       play_game
     end
   end
 
-  def self.no_more_attempts
+  private_class_method def self.no_more_attempts
     if @@attempts <= 0
       @@game_over = true
       puts 'You lose...'
     end
   end
 
-  def self.play_game
+  private_class_method def self.play_game
     puts 'Take a guess.'
     while @@game_over == false
       @@guess = gets.chomp.to_i
@@ -59,7 +60,7 @@ class Game
     end
   end
 
-  def self.game_progress
+  private_class_method def self.game_progress
     while @@attempts >= 0 && @@game_over == false
       if @@guess == @@password
         puts 'You did it! You cracked the code!!'
@@ -74,15 +75,6 @@ class Game
       end
     end
   end
-
-  def self.password
-    p @@password
-  end
-
-  def self.guess
-    p @@guess
-  end
 end
 
-Game.password
 Game.start_game
